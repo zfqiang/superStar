@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "2c6d35d1-047c-467b-921a-b2dbf035aef3",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "buy_frist_car_btn2": {
+      "ver": "1.0.3",
+      "uuid": "673a7ec3-d99c-437b-9a00-dce8c71045ad",
+      "rawTextureUuid": "2c6d35d1-047c-467b-921a-b2dbf035aef3",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 214,
+      "height": 95,
+      "rawWidth": 214,
+      "rawHeight": 95,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
