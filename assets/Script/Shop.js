@@ -35,7 +35,10 @@ cc.Class({
     quickBuy(event, data){
 
         //循环判断位置是否为空
-        for (let i = 0; i < ) 
+        var count = this.panelArr.length;
+        for (let i = 0; i < count; i++){
+            var laySprite = this.panelArr[i].getChildByName('laySprite');
+        }
 
     },
 });
