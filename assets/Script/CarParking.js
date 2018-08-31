@@ -12,28 +12,13 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        //停车位节点
-        panelsNode : cc.Node,
-        //商店节点
-        shopNode : {
-            default : null,
-            type : cc.Node
-        },
-        img : cc.SpriteFrame
+        parkingNode : cc.Node
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-
-        // var laySprite = this.panelsNode.getChildren()[0].getChildByName(SPRITE_SHOP_LAY_SPRITE).getComponent(cc.Sprite);
-        // console.log(laySprite);
-        //
-        // laySprite.spriteFrame = this.img;
-
-        //加载商店组件
-        this.shop = this.shopNode.getComponent(JS_SHOP_NAME);
-        this.shop.canvas = this;
+        this.parkingArr = this.parkingNode.getChildren();
     },
 
     start () {
@@ -42,9 +27,9 @@ cc.Class({
 
     // update (dt) {},
 
-    //返回
-    returnBtnClick(){
-        loadScene(SCENE_START_NAME);
+    //获取精灵组件
+    getParkingSprite(i){
+        let parkingSprite = this.parkingArr[i].getComponent(cc.Sprite);
+        return parkingSprite;
     },
-
 });
