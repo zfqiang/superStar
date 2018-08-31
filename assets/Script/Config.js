@@ -5,7 +5,7 @@ window.SCENE_GAME_NAME = 'GameScene';
 
 //定义脚本名称
 window.JS_SHOP_NAME = 'Shop';
-window.JS_CAR_PARKING_NODE_NAME = 'CarParking';
+window.JS_CAR_PARKING_NAME = 'CarParking';
 window.JS_PANELS_NODE_NAME = 'Panels';
 window.JS_CAR_ITEMS_NAME = 'CarItems';
 

@@ -90,7 +90,7 @@
         "__uuid__": "3fbc0132-ca30-4088-bb6b-41d4f501c069"
       }
     ],
-    "_id": "6frolLgeRI7bZxCvllkMiZ"
+    "_id": "d4l7zvwQxAqo38UCCCF99o"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -98,7 +98,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "1e0bf1fe-ed28-4739-a170-ecfa96a01a4b"
     },
     "fileId": "7edFr511hNKosYqGuslehB",
     "sync": false

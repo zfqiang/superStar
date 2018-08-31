@@ -12,32 +12,28 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        carItemsPrefab : cc.Prefab,
         parkingNode : cc.Node,
-        panelsNode : cc.Node,
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
 
-        //加载预载资源
-        this.carItemsPrefab = cc.instantiate(this.carItemsPrefab).getComponent(JS_CAR_ITEMS_NAME);
-        this.carItems = this.carItemsPrefab.carItems
+
 
         //加载车组件
-        this.parkings = this.parkingNode.getComponent(JS_CAR_PARKING_NODE_NAME);
-        this.parkings.canvas = this;
+        // this.parkings = this.parkingNode.getComponent(JS_CAR_PARKING_NODE_NAME);
+        this.parkingArr = this.parkingNode.getChildren();
+        // this.parkings.canvas = this;
 
         //加载停车组件
-        this.panels = this.panelsNode.getComponent(JS_PANELS_NODE_NAME);
-        this.panels.canvas = this;
+        // this.panels = this.panelsNode.getComponent(JS_PANELS_NODE_NAME);
+        // this.panels.canvas = this;
+        //
+        // //获取节点
+        // this.panelArr = this.panels.panelArr;
+        // this.parkingArr = this.parkings.parkingArr;
 
-        //获取节点
-        this.panelArr = this.panels.panelArr;
-        this.parkingArr = this.parkings.parkingArr;
-
-        this.self = this;
     },
 
     start () {
@@ -50,66 +46,19 @@ cc.Class({
 
     //快速购买
     quickBuy(event, data){
+        let length = this.parkingArr.length;
+        for (let i = 0; i < length; i++){
+            //获取组件
+            let parkingSprite = this.parkingArr[i].getComponent(JS_CAR_PARKING_NAME);
 
-        //循环判断位置是否为空
-        let count = this.panelArr.length;
-        for (let i = 0; i < count; i++){
-            let parkingSprite = this.parkings.getParkingSprite(i);
-            console.log(parkingSprite.spriteFrame);
-            if(parkingSprite.spriteFrame == undefined || parkingSprite.spriteFrame == null){
-                console.log(1111111);
-                //位置为空，添加
-                parkingSprite.spriteFrame = this.carItems[0];
-
-                //添加移动事件
-                parkingSprite.node.on(cc.Node.EventType.TOUCH_MOVE, this.touchMove, parkingSprite);
-                parkingSprite.node.on(cc.Node.EventType.TOUCH_END, this.touchEnd, parkingSprite);
+            //快速购买--返回成功，跳出循环
+            let result = parkingSprite.buyCar(data);
+            if(result){
                 break;
             }
         }
-    },
-
-    //移动
-    touchMove(event){
-        this.node.spriteFrame = null;
-        let delta = event.touch.getDelta();
-        this.node.x += delta.x;
-        this.node.y += delta.y;
-
-        console.log(this);
 
     },
-    //移动
-    touchEnd(touch, event){
-        let count = this.self.panelArr.length;
-        for (let i = 0; i < count; i++){
-            var panelBox = this.panelArr[i].getBoundingBoxToWorld();
 
-            let laySprite = this.layArr[i].getComponent(cc.Sprite);
 
-            let delta = event.touch.getDelta();
-            let newX = laySprite.node.x + delta.x;
-            let newY = laySprite.node.y + delta.y;
-            let newPos = this.node.convertToWorldSpace(cc.v2(newX, newY));
-
-            if(cc.rectIntersectsRect(panelBox, newPos)){
-                console.info(11111);
-                if(laySprite.spriteFrame != null){
-
-                }else{
-                    console.info(2222222);
-                    //位置为空，添加
-                    laySprite.spriteFrame = this.carItems[0];
-
-                    //添加移动事件
-                    laySprite.node.on(cc.Node.EventType.TOUCH_MOVE, this.touchMove, laySprite);
-                    laySprite.node.on(cc.Node.EventType.TOUCH_END, this.touchEnd, laySprite);
-                    break;
-                }
-            }
-            console.info(2222222);
-
-            break;
-        }
-    },
 });
